@@ -58,7 +58,16 @@ class App extends Component {
   render() {
     const VentanaP = [...this.state.ventanasArr]
 
+
+
+
     const BarraTarea = () => {
+      let date = new Date();
+
+
+      
+      var hoy = new Date();
+      var hora = hoy.getHours() + ':' + hoy.getMinutes();
       return (
         <div className="BarraTareas">
           <div className="Tareas">
@@ -70,7 +79,7 @@ class App extends Component {
                     onClick={() => {
                       let a = this.state.ventanasArr;
                       a[index].isOpen = !a[index].isOpen;
-                      this.setState({ventanasArr: a});
+                      this.setState({ ventanasArr: a });
                     }}
                   > {t.id} </button>
 
@@ -87,7 +96,7 @@ class App extends Component {
           </div>
           <div className="Herramientas">
             <div className="Tiempo">
-              <div className="Hora">11:23</div>
+              <div className="Hora">{hora}</div>
               <div className="Fecha">09-10-2021</div>
             </div>
           </div>
