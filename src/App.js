@@ -1,47 +1,18 @@
 import './App.css';
 import { Component } from 'react';
 
-const Ventana = ({ children, footer, titulo, isOpen }) => {
-  let a = window.Event.y;
-  if (isOpen) {
-    return (
-      <div className="DivBody">
-        <div className="DivHeader">
-          <div className="TituloHead">
-            <h3>{titulo}</h3>
-            {a}
-          </div>
-          <div className="CuadroImagen">
-            <div className="ImagenPerfil">
-              <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/7_avatar-32.png"></img>
-            </div>
-          </div>
-        </div>
-        <div className="DivContent">
-          <div className="DivContenido">
-            {children}
-          </div>
-        </div>
-        <div className="DivFooter">
-          <div className='FooterContent'>
-            {footer}
-          </div>
-
-        </div>
-      </div>
-    )
-  } else {
-    return (null)
-  }
-}
-
 class App extends Component {
   state = {
     nombre: '',
     ventanasArr: [
-      { id: 1, titulo: 'Ventana1', isOpen: false, alto: 600, ancho: 400, footer: 'Thomas Enrique' },
-      { id: 2, titulo: 'Ventana2', isOpen: true, alto: 600, ancho: 400, footer: 'Thomas Enrique' },
-      { id: 3, titulo: 'Ventana3', isOpen: true, alto: 600, ancho: 400, footer: 'Thomas Enrique' },
+      { id: 0, titulo: 'Ventana0', isOpen: false, alto: 600, ancho: 400, footer: 'Thomas Enrique', atencion: false },
+      { id: 1, titulo: 'Ventana1', isOpen: false, alto: 600, ancho: 400, footer: 'Thomas Enrique', atencion: false },
+      { id: 2, titulo: 'Ventana2', isOpen: true, alto: 600, ancho: 400, footer: 'Thomas Enrique', atencion: false },
+      { id: 3, titulo: 'Ventana3', isOpen: true, alto: 600, ancho: 400, footer: 'Thomas Enrique', atencion: false },
+      { id: 4, titulo: 'Ventana3', isOpen: true, alto: 600, ancho: 400, footer: 'Thomas Enrique', atencion: false },
+      { id: 5, titulo: 'Ventana3', isOpen: true, alto: 600, ancho: 400, footer: 'Thomas Enrique', atencion: false },
+      { id: 6, titulo: 'Ventana3', isOpen: true, alto: 600, ancho: 400, footer: 'Thomas Enrique', atencion: false },
+      { id: 7, titulo: 'Ventana3', isOpen: true, alto: 600, ancho: 400, footer: 'Thomas Enrique', atencion: false },
     ],
     ProgramaArr: [
       { key: 1, text: "Programa n1", img: "img not found" },
@@ -57,15 +28,7 @@ class App extends Component {
   }
   render() {
     const VentanaP = [...this.state.ventanasArr]
-
-
-
-
     const BarraTarea = () => {
-      let date = new Date();
-
-
-      
       var hoy = new Date();
       var hora = hoy.getHours() + ':' + hoy.getMinutes();
       return (
@@ -104,37 +67,71 @@ class App extends Component {
       )
     }
 
+    const Ventana = ({ children, footer, titulo, isOpen, id }) => {
+      let a = window.Event.y;
+      if (isOpen) {
+        return (
+          <div className="DivBody">
+            <div className="DivHeader">
+              <div className="TituloHead">
+                <h3>{titulo}</h3>
+                {a}
+              </div>
+              <div className="CuadroImagen">
+                <div className="ImagenPerfil">
+                  <img src="https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/7_avatar-32.png"></img>
+                </div>
+              </div>
+            </div>
+            <div className="DivContent">
+              <div className="DivContenido">
+                {children}
+              </div>
+            </div>
+            <div className="DivFooter">
+              <div className='FooterContent'>
+                {footer}
+              </div>
+
+            </div>
+          </div>
+        )
+      } else {
+        return (null)
+      }
+    }
 
     return (
-      <div className="body">
-        {VentanaP.map((v) => {
-          return (
-            <>
-              <Ventana
-                titulo={v.titulo}
-                isOpen={v.isOpen}
-                footer={v.footer}
-              >
-                <div>
-                  {/* <h1>Thomas Miño Pradel</h1> */}
-                  <p>El contenido de esta ventana se ajusta</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vulputate dui enim, id tristique sapien efficitur ac. Aenean dignissim condimentum vulputate. Aliquam facilisis sed turpis at sagittis. Etiam ullamcorper ex luctus hendrerit faucibus. Praesent sit amet quam sit amet felis condimentum dapibus vel ut nulla. Quisque viverra elementum ipsum, sed pellentesque turpis gravida eget. Suspendisse id mi vitae massa tincidunt rhoncus. Pellentesque tempus elit quis nulla egestas, non tincidunt tortor congue. Sed sagittis, massa eleifend consequat suscipit, ante mi vehicula ex, nec cursus ante dui sed magna. Nullam turpis ex, aliquet a tempor sed, vehicula vel nisi. In vitae quam sapien. Aenean faucibus posuere odio, non convallis nisl semper tempus. Vivamus cursus erat sed dolor imperdiet malesuada. Nam condimentum leo quis dui semper vestibulum.</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vulputate dui enim, id tristique sapien efficitur ac. Aenean dignissim condimentum vulputate. Aliquam facilisis sed turpis at sagittis. Etiam ullamcorper ex luctus hendrerit faucibus. Praesent sit amet quam sit amet felis condimentum dapibus vel ut nulla. Quisque viverra elementum ipsum, sed pellentesque turpis gravida eget. Suspendisse id mi vitae massa tincidunt rhoncus. Pellentesque tempus elit quis nulla egestas, non tincidunt tortor congue. Sed sagittis, massa eleifend consequat suscipit, ante mi vehicula ex, nec cursus ante dui sed magna. Nullam turpis ex, aliquet a tempor sed, vehicula vel nisi. In vitae quam sapien. Aenean faucibus posuere odio, non convallis nisl semper tempus. Vivamus cursus erat sed dolor imperdiet malesuada. Nam condimentum leo quis dui semper vestibulum.</p>
-                </div>
-              </Ventana>
-            </>
-          )
-        })}
+      <>
+        <div className="body">
+          {VentanaP.map((v) => {
+            return (
+              <>
+                <Ventana
+                  id={v.id}
+                  titulo={v.titulo}
+                  isOpen={v.isOpen}
+                  footer={v.footer}
 
-        {/* <Input
-          value={this.state.nombre}
-          onChange={e => this.updateValues('nombre', e.target.value)}
-        /> */}
+                >
+                  <div>
+                    {/* <h1>Thomas Miño Pradel</h1> */}
+                    <p>El contenido de esta ventana se ajusta</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vulputate dui enim, id tristique sapien efficitur ac. Aenean dignissim condimentum vulputate. Aliquam facilisis sed turpis at sagittis. Etiam ullamcorper ex luctus hendrerit faucibus. Praesent sit amet quam sit amet felis condimentum dapibus vel ut nulla. Quisque viverra elementum ipsum, sed pellentesque turpis gravida eget. Suspendisse id mi vitae massa tincidunt rhoncus. Pellentesque tempus elit quis nulla egestas, non tincidunt tortor congue. Sed sagittis, massa eleifend consequat suscipit, ante mi vehicula ex, nec cursus ante dui sed magna. Nullam turpis ex, aliquet a tempor sed, vehicula vel nisi. In vitae quam sapien. Aenean faucibus posuere odio, non convallis nisl semper tempus. Vivamus cursus erat sed dolor imperdiet malesuada. Nam condimentum leo quis dui semper vestibulum.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vulputate dui enim, id tristique sapien efficitur ac. Aenean dignissim condimentum vulputate. Aliquam facilisis sed turpis at sagittis. Etiam ullamcorper ex luctus hendrerit faucibus. Praesent sit amet quam sit amet felis condimentum dapibus vel ut nulla. Quisque viverra elementum ipsum, sed pellentesque turpis gravida eget. Suspendisse id mi vitae massa tincidunt rhoncus. Pellentesque tempus elit quis nulla egestas, non tincidunt tortor congue. Sed sagittis, massa eleifend consequat suscipit, ante mi vehicula ex, nec cursus ante dui sed magna. Nullam turpis ex, aliquet a tempor sed, vehicula vel nisi. In vitae quam sapien. Aenean faucibus posuere odio, non convallis nisl semper tempus. Vivamus cursus erat sed dolor imperdiet malesuada. Nam condimentum leo quis dui semper vestibulum.</p>
+                  </div>
+                </Ventana>
+              </>
+            )
+          })}
+
+
+        </div>
         <BarraTarea
           VentanaP={this.state.ventanasArr}
           Programas={this.state.ProgramaArr}
         />
-      </div>
+      </>
     )
   }
 }
