@@ -10,20 +10,14 @@
   height: 100vh;
   background-image: url("https://i.imgur.com/qIGtvPx.jpg");
 }
-
 ::-webkit-scrollbar {
   width: 12px;
 }
-/* ::-webkit-scrollbar-track { */
-  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
-  /* border-radius: 10px; */
-/* } */
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
   box-shadow: none;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
 }
-
 .DivBody{
   display: flex;
   background-color: rgb(255 255 255 / 40%);
@@ -92,9 +86,8 @@
   overflow: hidden;
   border-radius: 50%;
 }
-
 .BarraTareas{
-  background-color: rgb(255 255 255 / 55%);
+  background-color: rgb(255 255 255 / 40%);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
   width: 100%;
@@ -171,7 +164,6 @@
   justify-content: space-between;
   align-items: center;
 }
-
 .Inicio{
   display: flex;
   background-color: rgb(255 255 255 / 60%);
@@ -191,4 +183,68 @@
   left: 35%;
   z-index: 1;
   
+}
+.VentanaOpciones{
+  width: 70px;
+  height: 40px;
+  border-radius: 5px;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  display: flex;
+  /* background-color: rgb(255 255 255 / 47%); */
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+}
+.VentanaCerrar{
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border:none;
+}
+.BotonCerrar{
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  border:none;
+  background-color: rgb(255 255 255 / 47%);
+}
+.VentanaInicio{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.VentanaInicioTarea{
+  margin-right: 5%;
+  height: 50px;
+  width: 50px;
+}
+.VentanaInicioBoton{
+  width: 100%;
+  height: 100%;
+  background: none;
+  border: none;
+  /* background-color: red; */
+  /* border-bottom: 3px solid #709aec; */
+}
+.InicioCuadro{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  margin-right: 5%;
+  height: 100px;
+  width: 75px;
+}
+.ContenidoCentradoSimple{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
 }
