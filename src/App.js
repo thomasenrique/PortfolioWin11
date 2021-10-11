@@ -6,7 +6,7 @@ class App extends Component {
     nombre: '',
     ventanasArr: [
       { id: 0, titulo: 'Inicio', isOpen: false, alto: 700, ancho: 550, footer: 'Seleccione aplicación', run: true, img: "https://cdn0.iconfinder.com/data/icons/black-box/64/tile-sorting-32.png" },
-      { id: 1, titulo: 'Criptos', isOpen: false, alto: 850, ancho: 1350, footer: 'Tus criptos', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
+      { id: 1, titulo: 'Criptos', isOpen: false, alto: 700, ancho: 1100, footer: 'Tus criptos', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
       { id: 2, titulo: 'Comentarios', isOpen: false, alto: 600, ancho: 700, footer: 'Comentarios en construccion', run: false, img: "https://cdn0.iconfinder.com/data/icons/simpline-mix/64/simpline_6-48.png" },
       /* { id: 3, titulo: 'Ventana3', isOpen: false, alto: 745, ancho: 576, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
       { id: 4, titulo: 'Ventana4', isOpen: false, alto: 246, ancho: 890, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
@@ -181,7 +181,7 @@ class App extends Component {
                   <Ventana id={v.id} titulo={v.titulo} isOpen={v.isOpen} footer={v.footer} alto={v.alto} ancho={v.ancho} img={v.img}>
                     <div>
                       <div className="ContenidoCentradoSimple">
-                        <img alt="en construccion" src="https://i.ytimg.com/vi/qCylpmEvDCg/maxresdefault.jpg"></img>
+                        <img alt="en construccion" width="1000" src="https://i.ytimg.com/vi/qCylpmEvDCg/maxresdefault.jpg"></img>
                       </div>
 
                     </div>
