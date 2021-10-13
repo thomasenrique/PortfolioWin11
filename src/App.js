@@ -1,5 +1,6 @@
 import './App.css';
 import { Component } from 'react';
+import { useState, useEffect } from 'react'
 
 class App extends Component {
   state = {
@@ -8,11 +9,11 @@ class App extends Component {
       { id: 0, titulo: 'Inicio', isOpen: false, alto: 700, ancho: 550, footer: 'Seleccione aplicación', run: true, img: "https://cdn0.iconfinder.com/data/icons/black-box/64/tile-sorting-32.png" },
       { id: 1, titulo: 'Criptos', isOpen: false, alto: 700, ancho: 1100, footer: 'Tus criptos', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
       { id: 2, titulo: 'Comentarios', isOpen: false, alto: 600, ancho: 700, footer: 'Comentarios en construccion', run: false, img: "https://cdn0.iconfinder.com/data/icons/simpline-mix/64/simpline_6-48.png" },
-      /* { id: 3, titulo: 'Ventana3', isOpen: false, alto: 745, ancho: 576, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
-      { id: 4, titulo: 'Ventana4', isOpen: false, alto: 246, ancho: 890, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
-      { id: 5, titulo: 'Ventana5', isOpen: false, alto: 345, ancho: 687, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
-      { id: 6, titulo: 'Ventana6', isOpen: false, alto: 213, ancho: 465, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
-      { id: 7, titulo: 'Ventana7', isOpen: false, alto: 746, ancho: 674, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
+      { id: 3, titulo: 'Hooks', isOpen: false, alto: 745, ancho: 576, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-48.png" },
+      /*{ id: 4, titulo: 'Ventana4', isOpen: false, alto: 246, ancho: 890, footer: 'Thomas Enrique', run: false, img: "" },
+      { id: 5, titulo: 'Ventana5', isOpen: false, alto: 345, ancho: 687, footer: 'Thomas Enrique', run: false, img: "" },
+      { id: 6, titulo: 'Ventana6', isOpen: false, alto: 213, ancho: 465, footer: 'Thomas Enrique', run: false, img: "" },
+      { id: 7, titulo: 'Ventana7', isOpen: false, alto: 746, ancho: 674, footer: 'Thomas Enrique', run: false, img: "" },
      */
     ],
     ProgramaArr: [
@@ -128,6 +129,51 @@ class App extends Component {
       }
     }
 
+
+    const useContador2 = (inicial) => {
+      const [contador2, setContador2] = useState(inicial)
+      const incrementar = () => {
+        setContador2(contador2 + 1)
+      }
+
+      return [contador2, incrementar]
+    }
+
+    const CustomHooks = () => {
+      const [contador2, incrementar] = useContador2(0);
+      useEffect(() => {
+        document.title = contador2
+      }, [contador2])
+      return (
+        <>
+          <code className="code">
+            const [contador2, useContador2] = useContador2(0) <br></br>
+            Contador2: {contador2} <br></br>
+            "onClick en boton: incrementar"<br></br>
+          </code>
+          <p>Contador2: {contador2}</p>
+          <button onClick={incrementar}>Aumentar 2</button>
+          <p>Tiene un useEffect que actualiza el nombre de la pagina</p>
+        </>
+      )
+    }
+    const Hooks = () => {
+      const [contador, setContador] = useState(0)
+      return (
+        <>
+          <code className="code">
+            const [contador, setContador] = useState(0) <br></br>
+            Contador: {contador} <br></br>
+            onClick en boton: setContador(contador + 1)<br></br>
+          </code>
+          <p>Contador: {contador}</p>
+          <button onClick={() => { setContador(contador + 1) }}>Aumentar</button>
+        </>
+      )
+    }
+
+
+
     /* aplicaciones */
     return (
       <>
@@ -196,9 +242,35 @@ class App extends Component {
                   <Ventana id={v.id} titulo={v.titulo} isOpen={v.isOpen} footer={v.footer} alto={v.alto} ancho={v.ancho} img={v.img}>
                     <div>
                       <div className="ContenidoCentradoSimple">
-                      <img alt="criptos" width="500" height="500" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/SITIO-EN-CONSTRUCCION.jpg"></img>
+                        <img alt="criptos" width="500" height="500" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/SITIO-EN-CONSTRUCCION.jpg"></img>
                       </div>
 
+                    </div>
+                  </Ventana>
+                </>
+              )
+            }
+            if (v.id === 3) {
+              return (
+                <>
+                  <Ventana
+                    id={v.id}
+                    titulo={v.titulo}
+                    isOpen={v.isOpen}
+                    footer={v.footer}
+                    alto={v.alto}
+                    ancho={v.ancho}
+                    img={v.img}
+                  >
+                    <div>
+                      <div className="ContenidoCentradoSimple">
+                        <p>Hooks:</p>
+                        {<Hooks />}
+
+                        <br></br>
+                        <p>Custum Hooks</p>
+                        <CustomHooks />
+                      </div>
                     </div>
                   </Ventana>
                 </>
