@@ -41,7 +41,7 @@ class App extends Component {
       { id: 0, titulo: 'Inicio', isOpen: false, alto: 700, ancho: 550, footer: 'Seleccione aplicación', run: true, img: "https://cdn0.iconfinder.com/data/icons/black-box/64/tile-sorting-32.png" },
       { id: 1, titulo: 'Criptos', isOpen: false, alto: 700, ancho: 1100, footer: 'Tus criptos', run: false, img: "https://cdn4.iconfinder.com/data/icons/crypto-currency-and-coin-2/256/bitcoincash_bch_bitcoin-48.png" },
       { id: 2, titulo: 'Comentarios', isOpen: false, alto: 600, ancho: 700, footer: 'Comentarios en construccion', run: false, img: "https://cdn0.iconfinder.com/data/icons/simpline-mix/64/simpline_6-48.png" },
-      { id: 3, titulo: 'Hooks', isOpen: false, alto: 745, ancho: 576, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-48.png" },
+      { id: 3, titulo: 'Hooks', isOpen: false, alto: 800, ancho: 600, footer: 'Thomas Enrique', run: false, img: "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-48.png" },
       /*{ id: 4, titulo: 'Ventana4', isOpen: false, alto: 246, ancho: 890, footer: 'Thomas Enrique', run: false, img: "" },
       { id: 5, titulo: 'Ventana5', isOpen: false, alto: 345, ancho: 687, footer: 'Thomas Enrique', run: false, img: "" },
       { id: 6, titulo: 'Ventana6', isOpen: false, alto: 213, ancho: 465, footer: 'Thomas Enrique', run: false, img: "" },
@@ -177,6 +177,7 @@ class App extends Component {
       }, [contador2])
       return (
         <>
+        <img width="100%" src="https://i.ibb.co/KDyKmT9/Captura-de-pantalla-de-2021-10-13-14-02-47.png" alt="custum hoook"></img>
           <code className="code">
             const [contador2, useContador2] = useContador2(0) <br></br>
             Contador2: {contador2} <br></br>
@@ -233,10 +234,6 @@ class App extends Component {
                                       this.setState({ ventanasArr: a });
                                     }}
                                   > <img alt="avatar" src={app.img}></img> </button>
-
-
-
-
                                 </div>
                                 <div className="VentanaInicioTexto">
                                   {app.titulo}
@@ -283,6 +280,7 @@ class App extends Component {
                 </>
               )
             }
+            // hooks y custom hooks
             if (v.id === 3) {
               return (
                 <>
@@ -303,6 +301,8 @@ class App extends Component {
                         <br></br>
                         <p>Custum Hooks</p>
                         <CustomHooks />
+                        <br></br>
+                        <p>Si se minimiza o cierra esta ventana, en hook pierder el valor por que se hace un ComponenDidMount, i think</p>
                       </div>
                     </div>
                   </Ventana>
