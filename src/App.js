@@ -1,6 +1,38 @@
 import './App.css';
 import { Component } from 'react';
 import { useState, useEffect } from 'react'
+import styled from 'styled-components'
+
+const P = styled.p`
+      font-size: 24px;
+      color: green;
+    `
+
+const Button = styled.button`
+  transition: box-shadow 0.2s ease;
+
+      backgroud-color: ${props => props.primary ? 'red' : 'white'};
+      color: ${props => props.primary ? 'green' : 'blue'};
+      padding: 10px 15px;
+      border: solid 2px red;
+      border-radius: 4px;
+
+      &:hover {
+        box-shadow: 1px 2px 5px rgb(0,0,0,0.3);
+      }
+
+      &.secondary {
+        backgroud-color: blue
+        border: solid 2px red;
+        color: magenta
+        width: 150px
+      }
+    `
+
+const ButtonPulento = styled(Button)`
+    width: 200px;
+    heigth: 80px;
+    `
 
 class App extends Component {
   state = {
@@ -129,7 +161,6 @@ class App extends Component {
       }
     }
 
-
     const useContador2 = (inicial) => {
       const [contador2, setContador2] = useState(inicial)
       const incrementar = () => {
@@ -152,7 +183,8 @@ class App extends Component {
             "onClick en boton: incrementar"<br></br>
           </code>
           <p>Contador2: {contador2}</p>
-          <button onClick={incrementar}>Aumentar 2</button>
+          <Button primary={true} onClick={incrementar}>Aumentar 2</Button>
+          <Button primary={true} className="secondary" onClick={incrementar}>Aumentar 2</Button>
           <p>Tiene un useEffect que actualiza el nombre de la pagina</p>
         </>
       )
@@ -167,7 +199,8 @@ class App extends Component {
             onClick en boton: setContador(contador + 1)<br></br>
           </code>
           <p>Contador: {contador}</p>
-          <button onClick={() => { setContador(contador + 1) }}>Aumentar</button>
+          <ButtonPulento primary={false} onClick={() => { setContador(contador + 1) }}>Aumentar</ButtonPulento>
+          <ButtonPulento primary={false} as="a" href="#" onClick={() => { setContador(contador + 1) }}>Aumentar</ButtonPulento>
         </>
       )
     }
@@ -264,7 +297,7 @@ class App extends Component {
                   >
                     <div>
                       <div className="ContenidoCentradoSimple">
-                        <p>Hooks:</p>
+                        <P>Hooks</P>
                         {<Hooks />}
 
                         <br></br>
