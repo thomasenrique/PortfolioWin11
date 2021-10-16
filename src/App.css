@@ -1,4 +1,4 @@
-.body{
+.body {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -15,19 +15,18 @@
   width: 12px;
 }
 /* ::-webkit-scrollbar-track { */
-  /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
-  /* border-radius: 10px; */
+/* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  */
+/* border-radius: 10px; */
 /* } */
 ::-webkit-scrollbar-thumb {
   border-radius: 3px;
   box-shadow: none;
-  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 
-.DivBody{
+.DivBody {
   display: flex;
 
-  
   background-color: rgb(255 255 255 / 40%);
   border-radius: 8px;
   flex-direction: column;
@@ -37,9 +36,9 @@
   justify-content: space-between;
   align-items: flex-start;
   box-shadow: 0px 0px 50px -20px black;
-  margin: 10px
+  margin: 10px;
 }
-.DivHeader{
+.DivHeader {
   width: 100%;
   height: 55px;
   /* background-color: red; */
@@ -52,30 +51,29 @@
   position: relative;
   justify-content: center;
 }
-.DivContent{
+.DivContent {
   width: 100%;
   height: 100%;
   overflow: auto;
 }
-.DivContenido{
+.DivContenido {
   margin-left: 20px;
   margin-right: 20px;
   /* background-color: wheat; */
-  
 }
-.DivFooter{
+.DivFooter {
   width: 100%;
   height: 25px;
   font-size: 12px;
 }
-.FooterContent{
+.FooterContent {
   position: fixed;
   border-radius: 50%;
   /* float: right; */
   bottom: 3px;
   right: 20px;
 }
-.CuadroImagen{
+.CuadroImagen {
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -87,7 +85,7 @@
   align-items: center;
   justify-content: center;
 }
-.ImagenPerfil{
+.ImagenPerfil {
   width: 32px;
   height: 32px;
   position: fixed;
@@ -95,7 +93,7 @@
   border-radius: 50%;
 }
 
-.BarraTareas{
+.BarraTareas {
   background-color: rgb(255 255 255 / 55%);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
@@ -110,7 +108,7 @@
   justify-content: center;
   align-items: center;
 }
-.Tareas{
+.Tareas {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -118,8 +116,8 @@
   justify-content: center;
   align-items: center;
 }
-.Tarea{
-/*   background-color: blue; */
+.Tarea {
+  /*   background-color: blue; */
   margin-right: 1px;
   height: 50px;
   width: 50px;
@@ -137,9 +135,9 @@
   background: none;
   border: none;
   border-bottom: 3px solid #709aec;
-  background-color: rgb(255 255 255 / 15%); 
+  background-color: rgb(255 255 255 / 15%);
 }
-.Programas{
+.Programas {
   height: 50px;
   min-width: 100px;
   display: flex;
@@ -154,14 +152,14 @@
   padding-left: 5px;
   padding-right: 5px;
 }
-.Programa{
+.Programa {
   width: 25px;
   height: 25px;
   background-color: rgb(255 255 255 / 40%);
   margin-right: 5px;
   border-radius: 8px;
 }
-.Herramientas{
+.Herramientas {
   /* background-color: hotpink; */
   width: 100px;
   height: 50px;
@@ -174,7 +172,7 @@
   align-items: center;
 }
 
-.Inicio{
+.Inicio {
   display: flex;
   background-color: rgb(255 255 255 / 60%);
   border-radius: 8px;
@@ -187,13 +185,11 @@
   align-items: flex-start;
   box-shadow: 0px 0px 50px -20px black;
   margin: 10px;
-  position: fixed;  
+  position: fixed;
   right: 0;
   bottom: 45px;
   left: 35%;
   z-index: 1;
-  
-
 }
 .VentanaOpciones {
   width: 70px;

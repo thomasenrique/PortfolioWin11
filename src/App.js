@@ -3,11 +3,13 @@ import { Component } from 'react';
 import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 
+import Ventana from './Componentes/Ventana'
+import BarraTarea from './Componentes/BarraTarea'
+
 const P = styled.p`
       font-size: 24px;
       color: green;
     `
-
 const Button = styled.button`
   transition: box-shadow 0.2s ease;
 
@@ -28,11 +30,11 @@ const Button = styled.button`
         width: 150px
       }
     `
-
 const ButtonPulento = styled(Button)`
     width: 200px;
     heigth: 80px;
     `
+
 
 class App extends Component {
   state = {
@@ -57,109 +59,28 @@ class App extends Component {
       { key: 6, text: "Programa n6", img: "img not found" },
     ],
   };
+
   updateValues = (prop, value) => {
     this.setState({ [prop]: value })
   }
+  VentanaCerrar = (id) => {
+    let a = this.state.ventanasArr;
+    a[id].isOpen = !a[id].isOpen;
+    a[id].run = false;
+    this.setState({ ventanasArr: a });
+  }
+  VentanaMinimizar = (id) => {
+    let a = this.state.ventanasArr;
+    a[id].isOpen = !a[id].isOpen;
+    a[id].run = true;
+    this.setState({ ventanasArr: a });
+  }
+  BarraTareasMinimizarMaximizar = (index) => {
+    let a = this.state.ventanasArr;
+    a[index].isOpen = !a[index].isOpen;
+    this.setState({ ventanasArr: a });
+  }
   render() {
-    const VentanaP = [...this.state.ventanasArr]
-    /* barra */
-    const BarraTarea = () => {
-      var hoy = new Date();
-      var hora = hoy.getHours() + ':' + hoy.getMinutes();
-      return (
-        <div className="BarraTareas">
-          <div className="Tareas">
-            {VentanaP.map((t, index) => {
-              if (t.run || t.id === 0) {
-                return (
-                  <div className="Tarea" key={t.id}>
-
-                    <button className={t.isOpen ? "BotonOpen" : "Boton"}
-                      onClick={() => {
-                        let a = this.state.ventanasArr;
-                        a[index].isOpen = !a[index].isOpen;
-
-                        this.setState({ ventanasArr: a });
-                      }}
-                    > <img alt="avatar" width="32" height="32" src={t.img}></img> </button>
-
-                  </div>
-                )
-              } else {
-                return (null)
-              }
-
-            })}
-          </div>
-          <div className="Programas">
-            {this.state.ProgramaArr.map((p) => {
-              return (
-                <div className="Programa" key={p.key}></div>
-              )
-            })}
-          </div>
-          <div className="Herramientas">
-            <div className="Tiempo">
-              <div className="Hora">{hora}</div>
-              <div className="Fecha">09-10-2021</div>
-            </div>
-          </div>
-        </div>
-      )
-    }
-
-    const Ventana = ({ children, footer, titulo, isOpen, alto, ancho, id, img }) => {
-      if (isOpen) {
-        return (
-
-          <div className={id === 0 ? "Inicio" : "DivBody"} style={{ width: ancho, height: alto }}>
-            <div className="DivHeader">
-              <div className="VentanaOpciones">
-                <div className="VentanaCerrar">
-                  <button className={"BotonCerrar"}
-                    onClick={() => {
-                      let a = this.state.ventanasArr;
-                      a[id].isOpen = !a[id].isOpen;
-                      a[id].run = false;
-                      this.setState({ ventanasArr: a });
-                    }}
-                  > X </button>
-                </div>
-                <div className="VentanaMinimizar">
-                  <button className={"BotonCerrar"}
-                    onClick={() => {
-                      let a = this.state.ventanasArr;
-                      a[id].isOpen = !a[id].isOpen;
-                      a[id].run = true;
-                      this.setState({ ventanasArr: a });
-                    }}
-                  > _ </button>
-                </div>
-              </div>
-              <div className="TituloHead"><h3>{titulo}</h3></div>
-              <div className="CuadroImagen">
-                <div className="ImagenPerfil">
-                  <img alt="avatar" width="32" height="32" src={img}></img>
-                </div>
-              </div>
-            </div>
-            <div className="DivContent">
-              <div className="DivContenido">
-                {children}
-              </div>
-            </div>
-            <div className="DivFooter">
-              <div className='FooterContent'>
-                {footer}
-              </div>
-
-            </div>
-          </div>
-        )
-      } else {
-        return (null)
-      }
-    }
 
     const useContador2 = (inicial) => {
       const [contador2, setContador2] = useState(inicial)
@@ -169,7 +90,6 @@ class App extends Component {
 
       return [contador2, incrementar]
     }
-
     const CustomHooks = () => {
       const [contador2, incrementar] = useContador2(0);
       useEffect(() => {
@@ -177,7 +97,7 @@ class App extends Component {
       }, [contador2])
       return (
         <>
-        <img width="100%" src="https://i.ibb.co/KDyKmT9/Captura-de-pantalla-de-2021-10-13-14-02-47.png" alt="custum hoook"></img>
+          <img width="100%" src="https://i.ibb.co/KDyKmT9/Captura-de-pantalla-de-2021-10-13-14-02-47.png" alt="custum hoook"></img>
           <code className="code">
             const [contador2, useContador2] = useContador2(0) <br></br>
             Contador2: {contador2} <br></br>
@@ -205,19 +125,25 @@ class App extends Component {
         </>
       )
     }
-
-
-
     /* aplicaciones */
     return (
       <>
         <div className="body">
-          {VentanaP.map((v) => {
+          {this.state.ventanasArr.map((v) => {
             /* ventana inicio */
             if (v.id === 0) {
               return (
                 <>
-                  <Ventana id={v.id} titulo={v.titulo} isOpen={v.isOpen} footer={v.footer} alto={v.alto} ancho={v.ancho} img={v.img}>
+                  <Ventana
+                    id={v.id}
+                    titulo={v.titulo}
+                    isOpen={v.isOpen}
+                    footer={v.footer}
+                    alto={v.alto}
+                    ancho={v.ancho}
+                    img={v.img}
+                    Cerrar={(id) => { this.VentanaCerrar(id) }}
+                    minimizar={(id) => { this.VentanaMinimizar(id) }} >
                     <div>
                       <div className="VentanaInicio">
                         {this.state.ventanasArr.map((app, index) => {
@@ -254,7 +180,16 @@ class App extends Component {
             if (v.id === 1) {
               return (
                 <>
-                  <Ventana id={v.id} titulo={v.titulo} isOpen={v.isOpen} footer={v.footer} alto={v.alto} ancho={v.ancho} img={v.img}>
+                  <Ventana
+                    id={v.id}
+                    titulo={v.titulo}
+                    isOpen={v.isOpen}
+                    footer={v.footer}
+                    alto={v.alto}
+                    ancho={v.ancho}
+                    img={v.img}
+                    Cerrar={(id) => { this.VentanaCerrar(id) }}
+                    minimizar={(id) => { this.VentanaMinimizar(id) }} >
                     <div>
                       <div className="ContenidoCentradoSimple">
                         <img alt="en construccion" width="1000" src="https://i.ytimg.com/vi/qCylpmEvDCg/maxresdefault.jpg"></img>
@@ -269,12 +204,20 @@ class App extends Component {
             if (v.id === 2) {
               return (
                 <>
-                  <Ventana id={v.id} titulo={v.titulo} isOpen={v.isOpen} footer={v.footer} alto={v.alto} ancho={v.ancho} img={v.img}>
+                  <Ventana
+                    id={v.id}
+                    titulo={v.titulo}
+                    isOpen={v.isOpen}
+                    footer={v.footer}
+                    alto={v.alto}
+                    ancho={v.ancho}
+                    img={v.img}
+                    Cerrar={(id) => { this.VentanaCerrar(id) }}
+                    minimizar={(id) => { this.VentanaMinimizar(id) }} >
                     <div>
                       <div className="ContenidoCentradoSimple">
                         <img alt="criptos" width="500" height="500" src="https://upload.wikimedia.org/wikipedia/commons/1/1e/SITIO-EN-CONSTRUCCION.jpg"></img>
                       </div>
-
                     </div>
                   </Ventana>
                 </>
@@ -292,7 +235,8 @@ class App extends Component {
                     alto={v.alto}
                     ancho={v.ancho}
                     img={v.img}
-                  >
+                    Cerrar={(id) => { this.VentanaCerrar(id) }}
+                    minimizar={(id) => { this.VentanaMinimizar(id) }} >
                     <div>
                       <div className="ContenidoCentradoSimple">
                         <P>Hooks</P>
@@ -320,7 +264,8 @@ class App extends Component {
                     alto={v.alto}
                     ancho={v.ancho}
                     img={v.img}
-                  >
+                    Cerrar={(id) => { this.VentanaCerrar(id) }}
+                    minimizar={(id) => { this.VentanaMinimizar(id) }} >
 
                     <div>
                       <p>El contenido de esta ventana se ajusta</p>
@@ -339,6 +284,9 @@ class App extends Component {
         <BarraTarea
           VentanaP={this.state.ventanasArr}
           Programas={this.state.ProgramaArr}
+          CallbackSelect={(index) => { this.BarraTareasMinimizarMaximizar(index) }}
+
+
         />
       </>
     )
